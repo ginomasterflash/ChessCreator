@@ -11,6 +11,6 @@
       Title="Chat">
 
     <Border>
-
+        <TextBlock FontFamily="{StaticResource LatoBold}" Text="ciaoone" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Border>
 </local:BasePage>

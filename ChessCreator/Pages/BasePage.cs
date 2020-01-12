@@ -8,20 +8,10 @@ using ChessCreator.Core;
 namespace ChessCreator
 {
     /// <summary>
-    /// A base page for all pages to gain base functionality
+    /// The base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage<VM> : Page
-        where VM : BaseViewModel, new()
+    public class BasePage : Page
     {
-        #region Private Member
-
-        /// <summary>
-        /// The View Model associated with this page
-        /// </summary>
-        private VM mViewModel;
-
-        #endregion
-
         #region Public Properties
 
         /// <summary>
@@ -40,26 +30,12 @@ namespace ChessCreator
         public float SlideSeconds { get; set; } = 0.8f;
 
         /// <summary>
-        /// The View Model associated with this page
+        /// A flag to indicate if this page is should animate out on load.
+        /// Useful for when we are moving the page to another frame
         /// </summary>
-        public VM ViewModel
-        {
-            get => mViewModel;
-            set
-            {
-                // If nothing has changed, return
-                if (mViewModel == value)
-                    return;
+        public bool ShouldAnimateOut { get; set; }
 
-                // Update the value
-                mViewModel = value;
-
-                // Set the data context for this page
-                DataContext = mViewModel;
-            }
-        }
-
-        #endregion
+        #endregion Public Properties
 
         #region Constructor
 
@@ -75,11 +51,8 @@ namespace ChessCreator
             // Listen out for the page loading
             Loaded += BasePage_LoadedAsync;
 
-            // Create a default view model
-            ViewModel = new VM();
         }
-
-        #endregion
+        #endregion Constructor
 
         #region Animation Load / Unload
 
@@ -90,8 +63,13 @@ namespace ChessCreator
         /// <param name="e"></param>
         private async void BasePage_LoadedAsync(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Animate the page in
-            await AnimateInAsync();
+            // If we are setup to animate out on load
+            if (ShouldAnimateOut)
+                // Animate out the page
+                await AnimateOutAsync();
+            else
+                // Animate the page in
+                await AnimateInAsync();
         }
 
         /// <summary>
@@ -137,5 +115,59 @@ namespace ChessCreator
         }
 
         #endregion
+    }
+
+    /// <summary>
+    /// A base page with added ViewModel support 
+    /// </summary>
+    public class BasePage<VM> : BasePage
+        where VM : BaseViewModel, new()
+    {
+        #region Private Member
+
+        /// <summary>
+        /// The View Model associated with this page
+        /// </summary>
+        private VM mViewModel;
+
+        #endregion
+
+        #region Public Properties
+
+        /// <summary>
+        /// The View Model associated with this page
+        /// </summary>
+        public VM ViewModel
+        {
+            get => mViewModel;
+            set
+            {
+                // If nothing has changed, return
+                if (mViewModel == value)
+                    return;
+
+                // Update the value
+                mViewModel = value;
+
+                // Set the data context for this page
+                DataContext = mViewModel;
+            }
+        }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public BasePage() : base()
+        {
+            // Create a default view model
+            ViewModel = new VM();
+        }
+
+        #endregion
+
     }
 }
