@@ -10,7 +10,7 @@ namespace ChessCreator
     /// <typeparam name="Parent">The parent class to be the attached property</typeparam>
     /// <typeparam name="Property">The type of this attached property</typeparam>
     public abstract class BaseAttachedProperty<Parent, Property>
-        where Parent :  new()
+        where Parent : new()
     {
         #region Public Events
 
@@ -41,9 +41,9 @@ namespace ChessCreator
         /// The attached property for this class
         /// </summary>
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
-            "Value", 
-            typeof(Property), 
-            typeof(BaseAttachedProperty<Parent, Property>), 
+            "Value",
+            typeof(Property),
+            typeof(BaseAttachedProperty<Parent, Property>),
             new UIPropertyMetadata(
                 default(Property),
                 new PropertyChangedCallback(OnValuePropertyChanged),

@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Styles/Fonts.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/Buttons.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/Texts.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Scroll.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         <!-- Attach default Theme -->

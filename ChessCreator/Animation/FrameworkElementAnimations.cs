@@ -10,48 +10,23 @@ namespace ChessCreator
     /// </summary>
     public static class FrameworkElementAnimations
     {
+        #region Slide in from left
+
         /// <summary>
-        /// Slides an element in from the right
+        /// Slides an element in from the left
         /// </summary>
         /// <param name="element">The element to animate</param>
         /// <param name="seconds">The time the animation will take</param>
         /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
+        /// <param name="width">The animation width to animate to. If not specified the elements width is used</param>
         /// <returns></returns>
-        public static async Task SlideAndFadeInFromRightAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true)
+        public static async Task SlideAndFadeInFromLeftAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int width = 0)
         {
             // Create the storyboard
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideFromRight(seconds, element.ActualWidth, keepMargin: keepMargin);
-
-            // Add fade in animation
-            sb.AddFadeIn(seconds);
-
-            // Start animating
-            sb.Begin(element);
-
-            // Make page visible
-            element.Visibility = Visibility.Visible;
-
-            // Wait for it to finish
-            await Task.Delay((int)(seconds * 1000));
-        }
-
-        /// <summary>
-        /// Slides an element in from the right
-        /// </summary>
-        /// <param name="element">The element to animate</param>
-        /// <param name="seconds">The time the animation will take</param>
-        /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
-        /// <returns></returns>
-        public static async Task SlideAndFadeInFromLeftAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true)
-        {
-            // Create the storyboard
-            var sb = new Storyboard();
-
-            // Add slide from right animation
-            sb.AddSlideFromLeft(seconds, element.ActualWidth, keepMargin: keepMargin);
+            sb.AddSlideFromLeft(seconds, width == 0 ? element.ActualWidth : width, keepMargin: keepMargin);
 
             // Add fade in animation
             sb.AddFadeIn(seconds);
@@ -71,18 +46,52 @@ namespace ChessCreator
         /// </summary>
         /// <param name="element">The element to animate</param>
         /// <param name="seconds">The time the animation will take</param>
-        /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
+        /// <param name="keepMargin">Whether to keep the element at the same height during animation</param>
+        /// <param name="height">The animation height to animate to. If not specified the elements height is used</param>
         /// <returns></returns>
-        public static async Task SlideAndFadeOutToLeftAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true)
+        public static async Task SlideAndFadeOutToLeftAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int height = 0)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+
+            // Add slide to left animation
+            sb.AddSlideToLeft(seconds, height == 0 ? element.ActualHeight : height, keepMargin: keepMargin);
+
+            // Add fade in animation
+            sb.AddFadeOut(seconds);
+
+            // Start animating
+            sb.Begin(element);
+
+            // Make page visible
+            element.Visibility = Visibility.Visible;
+
+            // Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
+
+        #endregion
+
+        #region Slide in from right
+
+        /// <summary>
+        /// Slides an element in from the right
+        /// </summary>
+        /// <param name="element">The element to animate</param>
+        /// <param name="seconds">The time the animation will take</param>
+        /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
+        /// <param name="width">The animation width to animate to. If not specified the elements width is used</param>
+        /// <returns></returns>
+        public static async Task SlideAndFadeInFromRightAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int width = 0)
         {
             // Create the storyboard
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideToLeft(seconds, element.ActualWidth, keepMargin: keepMargin);
+            sb.AddSlideFromRight(seconds, width == 0 ? element.ActualWidth : width, keepMargin: keepMargin);
 
             // Add fade in animation
-            sb.AddFadeOut(seconds);
+            sb.AddFadeIn(seconds);
 
             // Start animating
             sb.Begin(element);
@@ -100,14 +109,15 @@ namespace ChessCreator
         /// <param name="element">The element to animate</param>
         /// <param name="seconds">The time the animation will take</param>
         /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
+        /// <param name="width">The animation width to animate to. If not specified the elements width is used</param>
         /// <returns></returns>
-        public static async Task SlideAndFadeOutToRightAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true)
+        public static async Task SlideAndFadeOutToRightAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int width = 0)
         {
             // Create the storyboard
             var sb = new Storyboard();
 
             // Add slide from right animation
-            sb.AddSlideToRight(seconds, element.ActualWidth, keepMargin: keepMargin);
+            sb.AddSlideToRight(seconds, width == 0 ? element.ActualWidth : width, keepMargin: keepMargin);
 
             // Add fade in animation
             sb.AddFadeOut(seconds);
@@ -121,5 +131,72 @@ namespace ChessCreator
             // Wait for it to finish
             await Task.Delay((int)(seconds * 1000));
         }
+
+        #endregion
+
+        #region Slide in from bottom
+
+        /// <summary>
+        /// Slides an element in from the bottom
+        /// </summary>
+        /// <param name="element">The element to animate</param>
+        /// <param name="seconds">The time the animation will take</param>
+        /// <param name="keepMargin">Whether to keep the element at the same width during animation</param>
+        /// <param name="height">The animation width to animate to. If not specified the elements width is used</param>
+        /// <returns></returns>
+        public static async Task SlideAndFadeInFromBottomAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int height = 0)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+
+            // Add slide from bottom animation
+            sb.AddSlideFromBottom(seconds, height == 0 ? element.ActualHeight : height, keepMargin: keepMargin);
+
+            // Add fade in animation
+            sb.AddFadeIn(seconds);
+
+            // Start animating
+            sb.Begin(element);
+
+            // Make page visible
+            element.Visibility = Visibility.Visible;
+
+            // Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
+
+        /// <summary>
+        /// Slides an element out to the bottom
+        /// </summary>
+        /// <param name="element">The element to animate</param>
+        /// <param name="seconds">The time the animation will take</param>
+        /// <param name="keepMargin">Whether to keep the element at the same height during animation</param>
+        /// <param name="height">The animation height to animate to. If not specified the elements height is used</param>
+        /// <returns></returns>
+        public static async Task SlideAndFadeOutToBottomAsync(this FrameworkElement element, float seconds = 0.3f, bool keepMargin = true, int height = 0)
+        {
+            // Create the storyboard
+            var sb = new Storyboard();
+
+            // Add slide to bottom animation
+            sb.AddSlideToBottom(seconds, height == 0 ? element.ActualHeight : height, keepMargin: keepMargin);
+
+            // Add fade in animation
+            sb.AddFadeOut(seconds);
+
+            // Start animating
+            sb.Begin(element);
+
+            // Make page visible
+            element.Visibility = Visibility.Visible;
+
+            // Wait for it to finish
+            await Task.Delay((int)(seconds * 1000));
+        }
+
+        #endregion
+
+
+
     }
 }

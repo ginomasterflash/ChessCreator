@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 using System;
 using ChessCreator.Core;
+using System.ComponentModel;
 
 namespace ChessCreator
 {
     /// <summary>
     /// The base page for all pages to gain base functionality
     /// </summary>
-    public class BasePage : Page
+    public class BasePage : UserControl
     {
         #region Public Properties
 
@@ -27,15 +28,15 @@ namespace ChessCreator
         /// <summary>
         /// The time any slide animation takes to complete
         /// </summary>
-        public float SlideSeconds { get; set; } = 0.8f;
+        public float SlideSeconds { get; set; } = 0.4f;
 
         /// <summary>
-        /// A flag to indicate if this page is should animate out on load.
+        /// A flag to indicate if this page should animate out on load.
         /// Useful for when we are moving the page to another frame
         /// </summary>
         public bool ShouldAnimateOut { get; set; }
 
-        #endregion Public Properties
+        #endregion
 
         #region Constructor
 
@@ -44,15 +45,19 @@ namespace ChessCreator
         /// </summary>
         public BasePage()
         {
+            // Don't bother animating in design time
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             // If we are animating in, hide to begin with
             if (PageLoadAnimation != PageAnimation.None)
                 Visibility = Visibility.Collapsed;
 
             // Listen out for the page loading
             Loaded += BasePage_LoadedAsync;
-
         }
-        #endregion Constructor
+
+        #endregion
 
         #region Animation Load / Unload
 
@@ -67,6 +72,7 @@ namespace ChessCreator
             if (ShouldAnimateOut)
                 // Animate out the page
                 await AnimateOutAsync();
+            // Otherwise...
             else
                 // Animate the page in
                 await AnimateInAsync();
@@ -87,7 +93,7 @@ namespace ChessCreator
                 case PageAnimation.SlideAndFadeInFromRight:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds, width: (int)Application.Current.MainWindow.Width);
 
                     break;
             }
@@ -118,7 +124,7 @@ namespace ChessCreator
     }
 
     /// <summary>
-    /// A base page with added ViewModel support 
+    /// A base page with added ViewModel support
     /// </summary>
     public class BasePage<VM> : BasePage
         where VM : BaseViewModel, new()
@@ -168,6 +174,5 @@ namespace ChessCreator
         }
 
         #endregion
-
     }
 }

@@ -14,14 +14,15 @@
 		MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}">
 
+   
     <Window.Resources>
         <Style TargetType="{x:Type local:Dashboard}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Window}">
-                        <!-- Outer border with the dropshadow margin -->
-                        <Border Margin="{Binding OuterMarginSizeThickness, FallbackValue=10}">
-
+                        <!-- Outer border with the drop shadow margin -->
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                            
                             <!-- Main window outline -->
                             <Grid>
 
@@ -30,9 +31,9 @@
                                         Background="{StaticResource BackgroundLightBrush}"
                                         CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}" />
 
-                                <!-- Window border and dropshadown -->
+                                <!-- Window border and drop shadow -->
                                 <Border CornerRadius="{Binding WindowCornerRadius, FallbackValue=10}"
-                                    Background="{Binding ForegroundLightBrush, FallbackValue=White}">
+                                    Background="{StaticResource ForegroundLightBrush}">
                                     <Border.Effect>
                                         <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
                                     </Border.Effect>
@@ -40,14 +41,14 @@
 
                                 <!-- The main window content -->
                                 <Grid>
-
+                                    
                                     <!-- Corner clipping -->
                                     <Grid.OpacityMask>
                                         <VisualBrush Visual="{Binding ElementName=Container}" />
                                     </Grid.OpacityMask>
-
+                                    
                                     <Grid.RowDefinitions>
-
+                                    
                                         <!-- Title Bar -->
                                         <RowDefinition Height="{Binding TitleHeightGridLength, FallbackValue=42}" />
 
@@ -55,7 +56,7 @@
                                         <RowDefinition Height="*" />
 
                                     </Grid.RowDefinitions>
-
+                                    
                                     <!-- Title Bar -->
                                     <Grid Grid.Column="0" Panel.ZIndex="1">
 
@@ -71,18 +72,13 @@
 
                                         <!-- Icon -->
                                         <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
-                                            <Image Source="/Images/1.png" />
+                                            <!--<Image Source="/Images/Logo/logo-small.png" />-->
                                         </Button>
 
                                         <!-- Title -->
                                         <Viewbox Grid.Column="0" Grid.ColumnSpan="3" Margin="5">
-                                            <!--<StackPanel>
-                                                <TextBlock Style="{StaticResource HeaderText}" 
-                                                       Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title, FallbackValue='Welcome, friend!'}" />
-                                                
-                                            </StackPanel>-->
                                             <StackPanel>
-                                                <TextBlock FontFamily="{StaticResource LatoBold}"  FontSize="{StaticResource FontSizeRegular}" Margin="0,0,0,-5">
+                                                <TextBlock FontFamily="{StaticResource LatoBold}"  FontSize="{StaticResource FontSizeLarge}" Margin="0,0,0,-5">
                                                     <Run Text="C" Foreground="{StaticResource WordOrangeBrush}"/>
                                                     <Run Text="H" Foreground="{StaticResource WordBlueBrush}"/>  
                                                     <Run Text="E" Foreground="{StaticResource WordRedBrush}"/>                                                    
@@ -103,12 +99,12 @@
                                     </Grid>
 
                                     <!-- Page Content -->
-                                    <Border Grid.Row="1" Padding="{Binding InnerContentPadding}"  ClipToBounds="True">
+                                    <Border Grid.Row="1" Padding="{Binding InnerContentPadding}" ClipToBounds="True">
                                         <ContentPresenter Content="{TemplateBinding Content}" />
                                     </Border>
-
+                                    
                                 </Grid>
-
+                                
                             </Grid>
                         </Border>
                     </ControlTemplate>
@@ -116,23 +112,24 @@
             </Setter>
         </Style>
     </Window.Resources>
-
+    
     <WindowChrome.WindowChrome>
         <WindowChrome
             ResizeBorderThickness="{Binding ResizeBorderThickness}"
             CaptionHeight="{Binding TitleHeight}"
-            CornerRadius="{Binding WindowCornerRadius}"
+            CornerRadius="0"
             GlassFrameThickness="0"
             />
     </WindowChrome.WindowChrome>
+
     <Border Background="{StaticResource WordBlueBrush}">
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
+            
             <!-- Blue background image -->
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/chess-background.png" />
@@ -141,18 +138,18 @@
             <local:PageHost Grid.Column="1" 
                    d:DataContext=""
                    DataContext="{Binding ApplicationViewModel.CurrentPage, 
-                   Source={x:Static local:ViewModelLocator.Instance}, 
-                   Converter={local:ApplicationPageValueConverter}}"
+                                     Source={x:Static local:ViewModelLocator.Instance},  
+                                     Converter={local:ApplicationPageValueConverter}}"
                    CurrentPage="{Binding}" />
 
-            <!-- Main Background -->
-           
             <!-- Side Menu -->
-            <local:SideMenuControl  
+            <local:SideMenuControl 
                 Width="300" 
                 local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, 
                                      Source={x:Static local:ViewModelLocator.Instance}}">
-                <local:ChatListControl/>
+
+                <local:ChatListControl />
+
             </local:SideMenuControl>
 
         </Grid>
