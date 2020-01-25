@@ -64,6 +64,7 @@
     <Compile Include="DataModels\IconType.cs" />
     <Compile Include="DataModels\MenuItemType.cs" />
     <Compile Include="Icons\IconTypeExtensions.cs" />
+    <Compile Include="IoC\Interfaces\IUIManager.cs" />
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
@@ -82,6 +83,9 @@
     <Compile Include="ViewModel\Chat\ChatList\Design\ChatListItemDesignModel.cs" />
     <Compile Include="ViewModel\Chat\ChatMessage\Design\ChatMessageListDesignModel.cs" />
     <Compile Include="ViewModel\Chat\ChatMessage\Design\ChatMessageListItemDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\BaseDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\Design\MessageBoxDialogDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\MessageBoxDialogViewModel.cs" />
     <Compile Include="ViewModel\Menu\Design\MenuDesignModel.cs" />
     <Compile Include="ViewModel\Menu\Design\MenuItemDesignModel.cs" />
     <Compile Include="ViewModel\Menu\MenuItemViewModel.cs" />

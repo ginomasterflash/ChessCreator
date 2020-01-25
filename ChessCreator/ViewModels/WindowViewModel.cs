@@ -56,10 +56,11 @@ namespace ChessCreator
         /// True if the window should be borderless because it is docked or maximized
         /// </summary>
         public bool Borderless => (mWindow.WindowState == WindowState.Maximized || mDockPosition != WindowDockPosition.Undocked);
+
         /// <summary>
         /// The size of the resize border around the window
         /// </summary>
-        public int ResizeBorder => Borderless ? 0 : 10;
+        public int ResizeBorder => 10;
 
         /// <summary>
         /// The size of the resize border around the window, taking into account the outer margin
@@ -109,6 +110,12 @@ namespace ChessCreator
         /// The height of the title bar / caption of the window
         /// </summary>
         public GridLength TitleHeightGridLength => new GridLength(TitleHeight + ResizeBorder);
+
+        /// <summary>
+        /// True if we should have a dimmed overlay on the window
+        /// such as when a popup is visible or the window is not focused
+        /// </summary>
+        public bool DimmableOverlayVisible { get; set; }
 
         #endregion
 
