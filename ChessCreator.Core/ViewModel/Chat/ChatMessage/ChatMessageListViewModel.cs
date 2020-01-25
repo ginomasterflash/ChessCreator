@@ -4,14 +4,14 @@ using System.Windows.Input;
 namespace ChessCreator.Core
 {
     /// <summary>
-    /// A view model for the overview chat message list
+    /// A view model for a chat message thread list
     /// </summary>
     public class ChatMessageListViewModel : BaseViewModel
     {
-        #region Public properties
+        #region Public Properties
 
         /// <summary>
-        /// The chat list items for the list
+        /// The chat thread items for the list
         /// </summary>
         public List<ChatMessageListItemViewModel> Items { get; set; }
 
@@ -20,18 +20,31 @@ namespace ChessCreator.Core
         /// </summary>
         public bool AttachmentMenuVisible { get; set; }
 
-        public ChatAttachmentPopupMenuViewModel AttachmentMenu { get; set; }
-
-        #endregion Public properties
-
-        #region Public command
+        /// <summary>
+        /// True if any popup menus are visible
+        /// </summary>
+        public bool AnyPopupVisible => AttachmentMenuVisible;
 
         /// <summary>
-        /// The command for when the attacment button is clicked
+        /// The view model for the attachment menu
+        /// </summary>
+        public ChatAttachmentPopupMenuViewModel AttachmentMenu { get; set; }
+
+        #endregion
+
+        #region Public Commands
+
+        /// <summary>
+        /// The command for when the attachment button is clicked
         /// </summary>
         public ICommand AttachmentButtonCommand { get; set; }
 
-        #endregion Public command
+        /// <summary>
+        /// The command for when the area outside of any popup is clicked
+        /// </summary>
+        public ICommand PopupClickawayCommand { get; set; }
+
+        #endregion
 
         #region Constructor
 
@@ -42,21 +55,32 @@ namespace ChessCreator.Core
         {
             // Create commands
             AttachmentButtonCommand = new RelayCommand(AttachmentButton);
+            PopupClickawayCommand = new RelayCommand(PopupClickaway);
 
-            //Make a default menu
+            // Make a default menu
             AttachmentMenu = new ChatAttachmentPopupMenuViewModel();
         }
-        #endregion Constructor
 
-        #region Command methods
+        #endregion
+
+        #region Command Methods
 
         /// <summary>
-        /// when the attachment button is clicked show/hide the attachment popup
+        /// When the attachment button is clicked show/hide the attachment popup
         /// </summary>
         public void AttachmentButton()
         {
-            // Toggle menu visibility 
+            // Toggle menu visibility
             AttachmentMenuVisible ^= true;
+        }
+
+        /// <summary>
+        /// When the popup clickaway area is clicked hide any popups
+        /// </summary>
+        public void PopupClickaway()
+        {
+            // Hide attachment menu
+            AttachmentMenuVisible = false;
         }
 
         #endregion

@@ -26,8 +26,8 @@ namespace ChessCreator.Core
         /// The RGB values (in hex) for the background color of the profile picture
         /// For example FF00FF for Red and Blue mixed
         /// </summary>
-        public string ProfilePictureRGB { get; set; } 
-        
+        public string ProfilePictureRGB { get; set; }
+
         /// <summary>
         /// True if this item is currently selected
         /// </summary>

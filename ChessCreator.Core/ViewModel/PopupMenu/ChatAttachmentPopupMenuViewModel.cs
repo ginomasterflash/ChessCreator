@@ -1,30 +1,30 @@
-﻿
-using ChessCreator.Core;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿using System.Collections.Generic;
 
 namespace ChessCreator.Core
 {
     /// <summary>
-    /// A view model for the any popup menus
+    /// A view model for any popup menus
     /// </summary>
-    public class ChatAttachmentPopupMenuViewModel : BasePopupMenuViewModel
+    public class ChatAttachmentPopupMenuViewModel : BasePopupViewModel
     {
-       
-        #region Public Properties
-
-        #endregion Public Properties
-
         #region Constructor
 
         /// <summary>
-        /// Default Constructor
+        /// Default constructor
         /// </summary>
         public ChatAttachmentPopupMenuViewModel()
         {
+            Content = new MenuViewModel
+            {
+                Items = new List<MenuItemViewModel>(new[]
+                {
+                    new MenuItemViewModel { Text = "Attach a file...", Type = MenuItemType.Header },
+                    new MenuItemViewModel { Text = "From Computer", Icon = IconType.File },
+                    new MenuItemViewModel { Text = "From Pictures", Icon = IconType.Picture },
+                })
+            };
         }
 
-        #endregion Constructor
+        #endregion
     }
 }

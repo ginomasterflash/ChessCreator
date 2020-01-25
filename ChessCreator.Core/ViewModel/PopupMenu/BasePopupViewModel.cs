@@ -7,11 +7,10 @@ using System.Windows.Media;
 namespace ChessCreator
 {
     /// <summary>
-    /// A view model for the any popup menus
+    /// A view model for any popup menus
     /// </summary>
-    public class BasePopupMenuViewModel : BaseViewModel
+    public class BasePopupViewModel : BaseViewModel
     {
-       
         #region Public Properties
 
         /// <summary>
@@ -24,20 +23,26 @@ namespace ChessCreator
         /// </summary>
         public ElementHorizontalAlignment ArrowAlignment { get; set; }
 
-        #endregion Public Properties
+        /// <summary>
+        /// The content inside of this popup menu
+        /// </summary>
+        public BaseViewModel Content { get; set; }
+
+        #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Default Constructor
+        /// Default constructor
         /// </summary>
-        public BasePopupMenuViewModel()
+        public BasePopupViewModel()
         {
             // Set default values
+            // TODO: Move colors into Core and make use of it here
             BubbleBackground = "ffffff";
             ArrowAlignment = ElementHorizontalAlignment.Left;
         }
 
-        #endregion Constructor
+        #endregion
     }
 }
