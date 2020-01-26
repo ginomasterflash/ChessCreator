@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 
 namespace ChessCreator
 {
@@ -35,8 +36,12 @@ namespace ChessCreator
                 // Create a single self-unhookable event 
                 // for the elements Loaded event
                 RoutedEventHandler onLoaded = null;
-                onLoaded = (ss, ee) =>
+                onLoaded = async (ss, ee) =>
                 {
+                    // Slight delay after load is needed for some elements to get laid out
+                    // and their width/heights correctly calculated
+                    await Task.Delay(5);
+
                     // Unhook ourselves
                     element.Loaded -= onLoaded;
 
@@ -97,6 +102,25 @@ namespace ChessCreator
         }
     }
 
+
+    /// <summary>
+    /// Animates a framework element sliding up from the bottom on show
+    /// and sliding out to the bottom on hide
+    /// NOTE: Keeps the margin
+    /// </summary>
+    public class AnimateSlideInFromBottomMarginProperty : AnimateBaseProperty<AnimateSlideInFromBottomMarginProperty>
+    {
+        protected override async void DoAnimation(FrameworkElement element, bool value)
+        {
+            if (value)
+                // Animate in
+                await element.SlideAndFadeInFromBottomAsync(FirstLoad ? 0 : 0.3f, keepMargin: true);
+            else
+                // Animate out
+                await element.SlideAndFadeOutToBottomAsync(FirstLoad ? 0 : 0.3f, keepMargin: true);
+        }
+    }
+
     /// <summary>
     /// Animates a framework element fading in on show
     /// and fading out on hide
@@ -113,5 +137,16 @@ namespace ChessCreator
                 await element.FadeOutAsync(FirstLoad ? 0 : 0.3f);
         }
     }
-}
 
+    /// <summary>
+    /// Animates a framework element sliding it from right to left and repeating forever
+    /// </summary>
+    public class AnimateMarqueeProperty : AnimateBaseProperty<AnimateMarqueeProperty>
+    {
+        protected override void DoAnimation(FrameworkElement element, bool value)
+        {
+            // Animate in
+            element.MarqueeAsync(FirstLoad ? 0 : 3f);
+        }
+    }
+}

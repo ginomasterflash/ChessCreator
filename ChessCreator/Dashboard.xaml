@@ -10,7 +10,7 @@
         AllowsTransparency="True"
 		WindowStartupLocation="CenterScreen" 
         x:Name="AppWindow"
-		MinWidth="{Binding WindowMinimumWidth}"
+        MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
         Deactivated="AppWindow_Deactivated"
         Activated="AppWindow_Activated"
@@ -135,6 +135,12 @@
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/chess-background.png" />
             </Grid.Background>
+
+            <!-- Settings page -->
+            <local:SettingsControl Grid.ColumnSpan="2"
+                                   Panel.ZIndex="9"
+                                   local:AnimateSlideInFromBottomMarginProperty.Value="{Binding ApplicationViewModel.SettingsMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}"
+                                   />
 
             <!-- Dimmed overlay -->
             <Border Grid.ColumnSpan="2"
