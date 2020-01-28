@@ -8,18 +8,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Border Background="{StaticResource ForegroundLightBrush}" 
             Padding="15">
-            <Grid>
+        <Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <!-- Settings Title -->
-                <Grid Height="40" Margin="0 0 0 20">
+            <!-- Settings Title -->
+            <Grid Height="40" Margin="0 0 0 20">
 
-                    <!-- Back button -->
-                    <Button Style="{StaticResource IconGrowButton}"
+                <!-- Back button -->
+                <Button Style="{StaticResource IconGrowButton}"
                     Height="40"
                     Content="{StaticResource FontAwesomeArrowLeftIcon}"
                     FontFamily="{StaticResource FontAwesome}"
@@ -29,8 +29,8 @@
                     Command="{Binding CloseCommand}"
                     />
 
-                    <!-- Settings header -->
-                    <TextBlock FontSize="{StaticResource FontSizeLarge}"
+                <!-- Settings header -->
+                <TextBlock FontSize="{StaticResource FontSizeLarge}"
                        Foreground="{StaticResource ForegroundVeryDarkBrush}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center">
@@ -41,12 +41,56 @@
                 <!-- Settings text -->
                 <Run Text="Settings"
                      FontFamily="{StaticResource LatoRegular}" />
-                    </TextBlock>
+                </TextBlock>
+
+            </Grid>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1"
+                  Width="600"
+                  VerticalAlignment="Top"
+                  >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="260" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <!-- Profile Picture -->
+                <Grid Margin="0 0 30 0"
+                      Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
+
+                    <!-- Mask for rounded corners-->
+                    <Border CornerRadius="8"
+                            Name="Mask"
+                            Background="White"
+                            />
+
+                    <!-- Image -->
+                    <Grid>
+                        <Grid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=Mask}" />
+                        </Grid.OpacityMask>
+
+                        <Image Source="/Images/Samples/rusty.jpg" Stretch="UniformToFill" />
+                    </Grid>
 
                 </Grid>
 
-                <!-- Main Content -->
+                <!-- Profile details -->
+                <StackPanel Grid.Column="1">
+                    <local:TextEntryControl />
+                    <local:TextEntryControl />
+                    <local:TextEntryControl />
+                    <local:TextEntryControl />
+
+                </StackPanel>
+
 
             </Grid>
-        </Border>
+
+
+        </Grid>
+    </Border>
 </UserControl>
