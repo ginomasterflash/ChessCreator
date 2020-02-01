@@ -96,6 +96,7 @@
     <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
     <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
     <Compile Include="AttachedProperties\PasswordBoxAttachedProperties.cs" />
+    <Compile Include="AttachedProperties\TextEntryWidthMatcherProperty.cs" />
     <Compile Include="Controls\BubbleContent.xaml.cs">
       <DependentUpon>BubbleContent.xaml</DependentUpon>
     </Compile>
@@ -110,6 +111,9 @@
     </Compile>
     <Compile Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml.cs">
       <DependentUpon>ChatMessageListItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Input\PasswordEntryControl.xaml.cs">
+      <DependentUpon>PasswordEntryControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Input\TextEntryControl.xaml.cs">
       <DependentUpon>TextEntryControl.xaml</DependentUpon>
@@ -144,7 +148,7 @@
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValueConverters\ApplicationPageValueConverter.cs" />
+    <Compile Include="ValueConverters\ApplicationPageHelpers.cs" />
     <Compile Include="ValueConverters\BaseValueConverter.cs" />
     <Compile Include="ValueConverters\BooleanInvertConverter.cs" />
     <Compile Include="ValueConverters\IconTypeToFontAwesomeConverter.cs" />
@@ -180,6 +184,10 @@
     <Page Include="Controls\Chat\ChatMessage\ChatMessageListItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Controls\Input\PasswordEntryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Input\TextEntryControl.xaml">
       <SubType>Designer</SubType>

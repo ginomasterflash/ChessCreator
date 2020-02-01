@@ -70,6 +70,7 @@
     <Compile Include="Expressions\ExpressionHelpers.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="ViewModel\Application\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\Application\Design\SettingsDesignModel.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\IHavePassword.cs" />
     <Compile Include="ViewModel\Base\RelayCommand.cs" />
@@ -86,7 +87,9 @@
     <Compile Include="ViewModel\Dialogs\BaseDialogViewModel.cs" />
     <Compile Include="ViewModel\Dialogs\Design\MessageBoxDialogDesignModel.cs" />
     <Compile Include="ViewModel\Dialogs\MessageBoxDialogViewModel.cs" />
+    <Compile Include="ViewModel\Input\Design\PasswordEntryDesignModel.cs" />
     <Compile Include="ViewModel\Input\Design\TextEntryDesignModel.cs" />
+    <Compile Include="ViewModel\Input\PasswordEntryViewModel.cs" />
     <Compile Include="ViewModel\Input\TextEntryViewModel.cs" />
     <Compile Include="ViewModel\Menu\Design\MenuDesignModel.cs" />
     <Compile Include="ViewModel\Menu\Design\MenuItemDesignModel.cs" />

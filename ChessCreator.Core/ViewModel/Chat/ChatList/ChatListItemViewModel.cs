@@ -1,10 +1,16 @@
-﻿namespace ChessCreator.Core
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Input;
+
+namespace ChessCreator.Core
 {
     /// <summary>
     /// A view model for each chat list item in the overview chat list
     /// </summary>
     public class ChatListItemViewModel : BaseViewModel
     {
+        #region Public Properties
+
         /// <summary>
         /// The display name of this chat list
         /// </summary>
@@ -24,7 +30,7 @@
         /// The RGB values (in hex) for the background color of the profile picture
         /// For example FF00FF for Red and Blue mixed
         /// </summary>
-        public string ProfilePictureRGB { get; set; } 
+        public string ProfilePictureRGB { get; set; }
 
         /// <summary>
         /// True if there are unread messages in this chat 
@@ -35,5 +41,104 @@
         /// True if this item is currently selected
         /// </summary>
         public bool IsSelected { get; set; }
+
+        #endregion
+
+        #region Public Commands
+
+        /// <summary>
+        /// Opens the current message thread
+        /// </summary>
+        public ICommand OpenMessageCommand { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ChatListItemViewModel()
+        {
+            // Create commands
+            OpenMessageCommand = new RelayCommand(OpenMessage);
+        }
+
+        #endregion
+
+        #region Command Methods
+
+        public void OpenMessage()
+        {
+            if (Name == "Jesse")
+            {
+                IoC.Application.GoToPage(ApplicationPage.Login, new LoginViewModel
+                {
+                    Email = "jesse@helloworld.com"
+                });
+                return;
+            }
+
+            IoC.Application.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
+            {
+                Items = new List<ChatMessageListItemViewModel>
+                {
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = Message,
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF00FF",
+                        SenderName = "Luke",
+                        SentByMe = true,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = "Parnell",
+                        SentByMe = false,
+                    },                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = "Parnell",
+                        SentByMe = false,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = Message,
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF00FF",
+                        SenderName = "Luke",
+                        SentByMe = true,
+                    },
+                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = "Parnell",
+                        SentByMe = false,
+                    },                    new ChatMessageListItemViewModel
+                    {
+                        Message = "A received message",
+                        Initials = Initials,
+                        MessageSentTime = DateTime.UtcNow,
+                        ProfilePictureRGB = "FF0000",
+                        SenderName = "Parnell",
+                        SentByMe = false,
+                    },
+                }
+            });
+        }
+
+        #endregion
     }
 }
