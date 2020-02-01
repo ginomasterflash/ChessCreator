@@ -55,7 +55,7 @@ namespace ChessCreator.Core
         #endregion
 
         /// <summary>
-        /// Attempts to register the user in
+        /// Attempts to register a new user
         /// </summary>
         /// <param name="parameter">The <see cref="SecureString"/> passed in from the view for the users password</param>
         /// <returns></returns>
@@ -69,6 +69,7 @@ namespace ChessCreator.Core
 
                 // IMPORTANT: Never store unsecure password in variable like this
                 var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
+
             });
         }
 
@@ -78,11 +79,8 @@ namespace ChessCreator.Core
         /// <returns></returns>
         public async Task LoginAsync()
         {
-            //IoC.Get<ApplicationViewModel>().SideMenuVisible ^= true;
-            //return;
-
             // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage( ApplicationPage.Login);
+            IoC.Application.GoToPage(ApplicationPage.Login);
 
             await Task.Delay(1);
         }

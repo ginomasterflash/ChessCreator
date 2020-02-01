@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:ChessCreator"
              xmlns:core="clr-namespace:ChessCreator.Core;assembly=ChessCreator.Core"
              mc:Ignorable="d" 
-            d:DesignWidth="300">
+             d:DesignWidth="300">
+
     <UserControl.Resources>
         <Style x:Key="ContentStyle" TargetType="{x:Type ContentControl}">
             <Setter Property="Template">

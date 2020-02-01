@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChessCreator"
              xmlns:core="clr-namespace:ChessCreator.Core;assembly=ChessCreator.Core"
-             mc:Ignorable="d" 
-             d:DataContext="{x:Static core:SettingsDesignModel.Instance}">
+             d:DataContext="{x:Static core:SettingsDesignModel.Instance}"
+             mc:Ignorable="d" >
     <Border Background="{StaticResource ForegroundLightBrush}" 
             Padding="15">
         <Grid>
@@ -104,5 +104,4 @@
 
         </Grid>
     </Border>
-
 </UserControl>

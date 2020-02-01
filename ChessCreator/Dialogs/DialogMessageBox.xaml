@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChessCreator"
              xmlns:core="clr-namespace:ChessCreator.Core;assembly=ChessCreator.Core"
-               mc:Ignorable="d">
+             mc:Ignorable="d">
     <StackPanel d:DataContext="{x:Static core:MessageBoxDialogDesignModel.Instance}"
                 Background="{StaticResource ForegroundLightBrush}"
                 >
@@ -15,10 +15,12 @@
                    />
 
         <Button Content="{Binding OkText}"
+                IsDefault="True"
+                IsCancel="True"
                 FontSize="{StaticResource FontSizeRegular}"
                 Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
                 HorizontalAlignment="Center"
                 />
 
     </StackPanel>
-    </local:BaseDialogUserControl>
+</local:BaseDialogUserControl>

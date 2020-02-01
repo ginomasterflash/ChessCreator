@@ -3,7 +3,7 @@
 namespace ChessCreator.Core
 {
     /// <summary>
-    /// The design-time data for a <see cref="ChatListItemViewModel"/>
+    /// The design-time data for a <see cref="ChatMessageListItemViewModel"/>
     /// </summary>
     public class ChatMessageListItemDesignModel : ChatMessageListItemViewModel
     {
@@ -25,7 +25,7 @@ namespace ChessCreator.Core
         {
             Initials = "LM";
             SenderName = "Luke";
-            Message = "This chat app is awesome! I bet it will be fast too";
+            Message = "Some design time visual text";
             ProfilePictureRGB = "3099c5";
             SentByMe = true;
             MessageSentTime = DateTimeOffset.UtcNow;

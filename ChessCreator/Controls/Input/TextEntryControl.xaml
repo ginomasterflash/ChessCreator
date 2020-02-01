@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:ChessCreator"
            xmlns:core="clr-namespace:ChessCreator.Core;assembly=ChessCreator.Core"
              mc:Ignorable="d" 
-    d:DataContext="{x:Static core:TextEntryDesignModel.Instance}">
-
+             d:DataContext="{x:Static core:TextEntryDesignModel.Instance}">
 
     <!-- Grey underline -->
     <Border BorderBrush="{StaticResource ForegroundDarkBrush}"

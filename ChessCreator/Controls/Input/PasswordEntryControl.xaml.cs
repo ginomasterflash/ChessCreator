@@ -111,5 +111,5 @@ namespace ChessCreator
             if (DataContext is PasswordEntryViewModel viewModel)
                 viewModel.ConfirmPassword = ConfirmPassword.SecurePassword;
         }
-    }
+    }   
 }

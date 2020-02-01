@@ -5,7 +5,7 @@ using System.Windows;
 namespace ChessCreator
 {
     /// <summary>
-    /// A converter that takes in core horizontal alignment enum and converts it to a WPF alignment
+    /// A converter that takes in the core horizontal alignment enum and converts it to a WPF alignment
     /// </summary>
     public class HorizontalAlignmentConverter : BaseValueConverter<HorizontalAlignmentConverter>
     {

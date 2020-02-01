@@ -64,10 +64,11 @@
                     </Border>
 
                     <Button 
-                        Style="{StaticResource TextButton}"
-                        Content="Or, I already have an account..."
-                        HorizontalAlignment="Center"
-                        Command="{Binding LoginCommand}"/>
+                        Style="{StaticResource TextButton}" 
+                        Content="Or, I already have an account..." 
+                        HorizontalAlignment="Center" 
+                        Command="{Binding LoginCommand}"
+                        />
 
                 </StackPanel>
             </ScrollViewer>

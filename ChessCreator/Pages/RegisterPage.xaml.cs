@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 
 namespace ChessCreator
 {
+
     /// <summary>
     /// Interaction logic for RegisterPage.xaml
     /// </summary>

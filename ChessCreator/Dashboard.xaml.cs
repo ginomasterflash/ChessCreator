@@ -5,7 +5,7 @@ using System.Windows;
 namespace ChessCreator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Dashboard.xaml
     /// </summary>
     public partial class Dashboard : Window
     {

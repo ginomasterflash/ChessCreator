@@ -16,6 +16,7 @@
         Activated="AppWindow_Activated"
         Title="Welcome, friend!" Height="600" Width="900">
 
+
     <Window.Resources>
         <Style TargetType="{x:Type local:Dashboard}">
             <Setter Property="Template">
@@ -74,6 +75,7 @@
                                         <!-- Icon -->
                                         <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
                                             <!--<Image Source="/Images/Logo/logo-small.png" />-->
+
                                         </Button>
 
                                         <!-- Title -->
@@ -150,7 +152,7 @@
                         local:AnimateFadeInProperty.Value="{Binding DimmableOverlayVisible}"
                         />
             </Border>
-            
+
             <local:PageHost Grid.Column="1" 
                    CurrentPage="{Binding ApplicationViewModel.CurrentPage,
                                         Source={x:Static local:ViewModelLocator.Instance}}"

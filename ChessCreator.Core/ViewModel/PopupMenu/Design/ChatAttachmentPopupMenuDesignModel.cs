@@ -7,30 +7,29 @@ using System.Windows.Media;
 namespace ChessCreator.Core
 {
     /// <summary>
-    /// A design time data for a <see cref="ChattachmentPopupMenuViewModel"/>
+    /// The design-time data for a <see cref="ChatAttachmentPopupMenuViewModel"/>
     /// </summary>
     public class ChatAttachmentPopupMenuDesignModel : ChatAttachmentPopupMenuViewModel
     {
-
         #region Singleton
 
         /// <summary>
         /// A single instance of the design model
         /// </summary>
-        public static ChatAttachmentPopupMenuViewModel Instance => new ChatAttachmentPopupMenuViewModel();
+        public static ChatAttachmentPopupMenuDesignModel Instance => new ChatAttachmentPopupMenuDesignModel();
 
-        #endregion Singleton
+        #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Default Constructor
+        /// Default constructor
         /// </summary>
         public ChatAttachmentPopupMenuDesignModel()
         {
         }
 
-        #endregion Constructor
+        #endregion
     }
 
 }

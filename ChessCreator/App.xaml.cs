@@ -15,7 +15,7 @@ namespace ChessCreator
     public partial class App : Application
     {
         /// <summary>
-        /// Custom startup so we load our IoC immediately before anything else 
+        /// Custom startup so we load our IoC immediately before anything else
         /// </summary>
         /// <param name="e"></param>
         protected override void OnStartup(StartupEventArgs e)

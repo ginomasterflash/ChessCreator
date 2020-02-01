@@ -11,17 +11,21 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ChessCreator
 {
+
     /// <summary>
     /// Interaction logic for ChatPage.xaml
     /// </summary>
     public partial class ChatPage : BasePage<ChatMessageListViewModel>
     {
+        #region Constructor
+
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -39,5 +43,25 @@ namespace ChessCreator
             InitializeComponent();
         }
 
+        #endregion
+
+        #region Override Methods
+
+        /// <summary>
+        /// Fired when the view model changes
+        /// </summary>
+        protected override void OnViewModelChanged()
+        {
+            // Make sure UI exists first
+            if (ChatMessageList == null)
+                return;
+
+            // Fade in chat message list
+            var storyboard = new Storyboard();
+            storyboard.AddFadeIn(1);
+            storyboard.Begin(ChatMessageList);
+        }
+
+        #endregion
     }
 }
