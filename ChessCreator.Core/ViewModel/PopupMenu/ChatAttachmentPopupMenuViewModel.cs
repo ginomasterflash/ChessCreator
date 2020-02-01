@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using ChessCreator.Core;
+using System.Collections.Generic;
 
-namespace ChessCreator.Core
+namespace ChessCreator
 {
     /// <summary>
     /// A view model for any popup menus

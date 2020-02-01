@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessCreator.Core
+﻿namespace ChessCreator.Core
 {
     /// <summary>
     /// The types of icons to use within the application

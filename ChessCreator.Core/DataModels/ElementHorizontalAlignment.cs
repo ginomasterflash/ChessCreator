@@ -1,4 +1,4 @@
-﻿namespace ChessCreator
+﻿namespace ChessCreator.Core
 {
     /// <summary>
     /// Horizontal alignment values for an element

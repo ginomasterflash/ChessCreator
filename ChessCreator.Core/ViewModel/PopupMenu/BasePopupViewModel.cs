@@ -1,8 +1,4 @@
-﻿
-using ChessCreator.Core;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿using ChessCreator.Core;
 
 namespace ChessCreator
 {

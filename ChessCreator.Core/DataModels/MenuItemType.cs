@@ -1,6 +1,4 @@
-﻿
-
-namespace ChessCreator.Core
+﻿namespace ChessCreator.Core
 {
     /// <summary>
     /// The types of items for a menu item

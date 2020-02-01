@@ -26,7 +26,7 @@ namespace ChessCreator.Core
         /// The RGB values (in hex) for the background color of the profile picture
         /// For example FF00FF for Red and Blue mixed
         /// </summary>
-        public string ProfilePictureRGB { get; set; }
+        public string ProfilePictureRGB { get; set; } 
 
         /// <summary>
         /// True if this item is currently selected
@@ -52,5 +52,11 @@ namespace ChessCreator.Core
         /// The time the message was sent
         /// </summary>
         public DateTimeOffset MessageSentTime { get; set; }
+
+        /// <summary>
+        /// A flag indicating if this item was added since the first main list of items was created
+        /// Used as a flag for animating in
+        /// </summary>
+        public bool NewItem { get; set; }
     }
 }

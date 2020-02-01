@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessCreator.Core
-{
+﻿namespace ChessCreator.Core
+{ 
     /// <summary>
     /// Details for a message box dialog
     /// </summary>
