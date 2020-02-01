@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ChessCreator
 {
@@ -32,7 +35,7 @@ namespace ChessCreator
             // Get the framework element
             if (!(sender is FrameworkElement element))
                 return;
-
+            
             // Don't fire if the value doesn't change
             if ((bool)sender.GetValue(ValueProperty) == (bool)value && mAlreadyLoaded.ContainsKey(sender))
                 return;
@@ -44,9 +47,7 @@ namespace ChessCreator
                 mAlreadyLoaded[sender] = false;
 
                 // Start off hidden before we decide how to animate
-                // if we are to be animated out initially
-                if (!(bool)value)
-                    element.Visibility = Visibility.Hidden;
+                element.Visibility = Visibility.Hidden;
 
                 // Create a single self-unhookable event 
                 // for the elements Loaded event
@@ -120,6 +121,18 @@ namespace ChessCreator
         }
     }
 
+    /// <summary>
+    /// Animates a framework element sliding up from the bottom on load
+    /// if the value is true
+    /// </summary>
+    public class AnimateSlideInFromBottomOnLoadProperty : AnimateBaseProperty<AnimateSlideInFromBottomOnLoadProperty>
+    {
+        protected override async void DoAnimation(FrameworkElement element, bool value, bool firstLoad)
+        {
+            // Animate in
+            await element.SlideAndFadeInAsync(AnimationSlideInDirection.Bottom, !value, !value ? 0 : 0.3f, keepMargin: false);
+        }
+    }
 
     /// <summary>
     /// Animates a framework element sliding up from the bottom on show
@@ -155,7 +168,7 @@ namespace ChessCreator
                 await element.FadeOutAsync(firstLoad ? 0 : 0.3f);
         }
     }
-
+    
     /// <summary>
     /// Animates a framework element sliding it from right to left and repeating forever
     /// </summary>

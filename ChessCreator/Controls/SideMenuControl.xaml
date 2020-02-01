@@ -10,7 +10,7 @@
 
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
-
+            
             <!-- Main background -->
             <Border>
 
@@ -60,5 +60,5 @@
 
         </ControlTemplate>
     </UserControl.Template>
-
+    
 </UserControl>

@@ -1,9 +1,7 @@
-﻿using ChessCreator.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using ChessCreator.Core;
+using System.Windows;
 
 namespace ChessCreator
 {

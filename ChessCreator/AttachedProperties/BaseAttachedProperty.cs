@@ -41,9 +41,9 @@ namespace ChessCreator
         /// The attached property for this class
         /// </summary>
         public static readonly DependencyProperty ValueProperty = DependencyProperty.RegisterAttached(
-            "Value",
-            typeof(Property),
-            typeof(BaseAttachedProperty<Parent, Property>),
+            "Value", 
+            typeof(Property), 
+            typeof(BaseAttachedProperty<Parent, Property>), 
             new UIPropertyMetadata(
                 default(Property),
                 new PropertyChangedCallback(OnValuePropertyChanged),

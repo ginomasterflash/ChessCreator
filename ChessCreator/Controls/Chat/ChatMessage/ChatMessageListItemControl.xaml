@@ -36,7 +36,7 @@
                   HorizontalAlignment="{Binding SentByMe, Converter={local:SentByMeToAlignmentConverter}}">
 
                 <Grid.Triggers>
-
+                    
                     <!-- Mouse over shows time -->
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
@@ -54,15 +54,15 @@
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
-
+                    
                 </Grid.Triggers>
-
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
+                
                 <!-- Speech bubble rectangle -->
                 <Border CornerRadius="10"
                     Padding="15"

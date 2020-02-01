@@ -1,11 +1,10 @@
 ﻿using ChessCreator.Core;
 using System.Windows.Controls;
 
-
 namespace ChessCreator
 {
     /// <summary>
-    /// Logica di interazione per SettingsControl.xaml
+    /// Interaction logic for SettingsControl.xaml
     /// </summary>
     public partial class SettingsControl : UserControl
     {

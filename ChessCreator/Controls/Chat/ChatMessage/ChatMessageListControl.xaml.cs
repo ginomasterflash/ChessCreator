@@ -3,7 +3,7 @@
 namespace ChessCreator
 {
     /// <summary>
-    /// Interaction logic for ChatListControl.xaml
+    /// Interaction logic for ChatMessageListControl.xaml
     /// </summary>
     public partial class ChatMessageListControl : UserControl
     {

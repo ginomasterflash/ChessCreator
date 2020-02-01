@@ -20,8 +20,6 @@ namespace ChessCreator
     /// </summary>
     public partial class BubbleContent : UserControl
     {
-        
-
         public BubbleContent()
         {
             InitializeComponent();

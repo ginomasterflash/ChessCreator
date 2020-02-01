@@ -14,16 +14,16 @@
     <Grid>
 
         <Grid.RowDefinitions>
-
+            
             <!-- Title bar -->
             <RowDefinition Height="Auto" />
-
+            
             <!-- Chat List -->
             <RowDefinition Height="*" />
-
+            
             <!-- Message Send Text box -->
             <RowDefinition Height="Auto" />
-
+            
         </Grid.RowDefinitions>
 
         <!-- Popup Overlay -->
@@ -59,7 +59,7 @@
                        />
                 </Border>
             </Border>-->
-
+            
             <!-- Title text -->
             <TextBlock Text="Parnell" 
                        Grid.ColumnSpan="2"
@@ -77,25 +77,25 @@
             </StackPanel>
 
         </Grid>
-
+        
         <!-- Chat List -->
         <local:ChatMessageListControl 
             x:Name="ChatMessageList" 
             Grid.Row="1" 
             DataContext="{Binding}"
             />
-
+        
         <!-- Attachment Menu Popup -->
         <Border Grid.Row="1"
                 Panel.ZIndex="2"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
                 local:AnimateSlideInFromBottomProperty.Value="{Binding AttachmentMenuVisible}">
-
+            
             <local:BubbleContent DataContext="{Binding AttachmentMenu}" />
-
+            
         </Border>
-
+        
         <!-- Message Send Text box -->
         <Grid Grid.Row="2" 
               Panel.ZIndex="3"
@@ -107,10 +107,10 @@
             <Grid.ColumnDefinitions>
                 <!-- Attach button -->
                 <ColumnDefinition Width="Auto" />
-
+                
                 <!-- Text entry box -->
                 <ColumnDefinition Width="*" />
-
+                
                 <!-- Additional buttons -->
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
@@ -125,8 +125,11 @@
                     />
 
             <!-- Message box -->
-            <TextBox Grid.Column="1" 
+            <TextBox x:Name="MessageText"    
+                     Grid.Column="1" 
                      Tag="Write a message..."
+                     local:IsFocusedProperty.Value="True"
+                     Text="{Binding PendingMessageText, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="{StaticResource FontSizeRegular}"
                      VerticalAlignment="Center"
                      BorderThickness="0"
@@ -134,6 +137,7 @@
                      AcceptsReturn="True"
                      AcceptsTab="True"
                      VerticalScrollBarVisibility="Auto"
+                     PreviewKeyDown="MessageText_PreviewKeyDown"
                      />
 
             <!-- Additional buttons -->
@@ -149,10 +153,12 @@
                     Content="{StaticResource FontAwesomeEmojiIcon}"
                     Foreground="{StaticResource WordOrangeBrush}"
                     />
-
+                
                 <!-- Send button -->
                 <Button Content="Send"
                         Padding="8"
+                        IsDefault="True"
+                        Focusable="False"
                         Command="{Binding SendCommand}"
                         Background="{StaticResource WordGreenBrush}"
                         FontSize="{StaticResource FontSizeRegular}"
@@ -161,6 +167,6 @@
             </StackPanel>
 
         </Grid>
-
+        
     </Grid>
 </local:BasePage>

@@ -15,7 +15,7 @@
             <DataTemplate>
 
                 <Grid>
-
+                    
                     <!-- Header -->
                     <Grid Visibility="{Binding Type, Converter={local:MenuItemTypeVisiblityConverter}, ConverterParameter=Header}">
 
@@ -33,7 +33,7 @@
                                    />
 
                     </Grid>
-
+                    
                     <!-- Menu Item -->
                     <Border Background="{StaticResource ForegroundLightBrush}"
                             CornerRadius="8"
@@ -101,7 +101,7 @@
                                        Text="{Binding Icon, Converter={local:IconTypeToFontAwesomeConverter}}"
                                        Foreground="{StaticResource ForegroundDarkBrush}"
                                        />
-
+                            
                             <!-- Text -->
                             <TextBlock Name="text"
                                        Grid.Column="1"
@@ -112,13 +112,13 @@
                                        Text="{Binding Text}" />
 
                         </Grid>
-
+                        
                     </Border>
-
+                    
                 </Grid>
-
+                
             </DataTemplate>
         </ItemsControl.ItemTemplate>
-
+        
     </ItemsControl>
 </UserControl>

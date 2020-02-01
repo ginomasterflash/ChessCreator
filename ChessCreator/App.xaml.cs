@@ -1,4 +1,6 @@
-﻿using ChessCreator.Core;
+﻿
+using ChessCreator;
+using ChessCreator.Core;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

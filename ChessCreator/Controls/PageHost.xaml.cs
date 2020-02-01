@@ -43,8 +43,8 @@ namespace ChessCreator
         /// Registers <see cref="CurrentPageViewModel"/> as a dependency property
         /// </summary>
         public static readonly DependencyProperty CurrentPageViewModelProperty =
-            DependencyProperty.Register(nameof(CurrentPageViewModel),
-                typeof(BaseViewModel), typeof(PageHost),
+            DependencyProperty.Register(nameof(CurrentPageViewModel), 
+                typeof(BaseViewModel), typeof(PageHost), 
                 new UIPropertyMetadata());
 
         #endregion
