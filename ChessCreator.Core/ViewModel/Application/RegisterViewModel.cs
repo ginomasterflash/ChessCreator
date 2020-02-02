@@ -64,12 +64,6 @@ namespace ChessCreator.Core
             await RunCommandAsync(() => RegisterIsRunning, async () =>
             {
                 await Task.Delay(5000);
-
-                var email = Email;
-
-                // IMPORTANT: Never store unsecure password in variable like this
-                var pass = (parameter as IHavePassword).SecurePassword.Unsecure();
-
             });
         }
 

@@ -82,6 +82,8 @@ namespace ChessCreator.Core
 
             IoC.Application.GoToPage(ApplicationPage.Chat, new ChatMessageListViewModel
             {
+                DisplayTitle = "Parnell, Me",
+
                 Items = new ObservableCollection<ChatMessageListItemViewModel>
                 {
                     new ChatMessageListItemViewModel
@@ -101,7 +103,8 @@ namespace ChessCreator.Core
                         ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
-                    },                    new ChatMessageListItemViewModel
+                    },
+                    new ChatMessageListItemViewModel
                     {
                         Message = "A received message",
                         Initials = Initials,
@@ -127,9 +130,14 @@ namespace ChessCreator.Core
                         ProfilePictureRGB = "FF0000",
                         SenderName = "Parnell",
                         SentByMe = false,
-                    },                    new ChatMessageListItemViewModel
+                    },
+                    new ChatMessageListItemViewModel
                     {
                         Message = "A received message",
+                        ImageAttachment = new ChatMessageListItemImageAttachmentViewModel
+                        {
+                            ThumbnailUrl = "http://anywhere"
+                        },
                         Initials = Initials,
                         MessageSentTime = DateTime.UtcNow,
                         ProfilePictureRGB = "FF0000",
