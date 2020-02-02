@@ -11,10 +11,10 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
+        Icon="Images/Logo/logo-small.png"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
         Title="{Binding Title}">
-
 
     <Window.Resources>
         <Style TargetType="{x:Type local:DialogWindow}">

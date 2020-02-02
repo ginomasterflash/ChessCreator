@@ -24,7 +24,7 @@ namespace ChessCreator
         /// <summary>
         /// The margin around the window to allow for a drop shadow
         /// </summary>
-        private Thickness mOuterMarginSize = new Thickness(10);
+        private Thickness mOuterMarginSize = new Thickness(5);
 
         /// <summary>
         /// The radius of the edges of the window
@@ -49,6 +49,12 @@ namespace ChessCreator
         /// The smallest height the window can go to
         /// </summary>
         public double WindowMinimumHeight { get; set; } = 500;
+
+        /// <summary>
+        /// True if the window is currently being moved/dragged
+        /// </summary>
+        public bool BeingMoved { get; set; }
+
 
         /// <summary>
         /// True if the window should be borderless because it is docked or maximized
@@ -92,6 +98,11 @@ namespace ChessCreator
             get => Borderless ? 0 : mWindowRadius;
             set => mWindowRadius = value;
         }
+
+        /// <summary>
+        /// The rectangle border around the window when docked
+        /// </summary>
+        public int FlatBorderThickness => Borderless && mWindow.WindowState != WindowState.Maximized ? 1 : 0;
 
         /// <summary>
         /// The radius of the edges of the window
@@ -173,6 +184,26 @@ namespace ChessCreator
                 // Fire off resize events
                 WindowResized();
             };
+
+            // On window being moved/dragged
+            mWindowResizer.WindowStartedMove += () =>
+            {
+                // Update being moved flag
+                BeingMoved = true;
+            };
+
+            // Fix dropping an undocked window at top which should be positioned at the
+            // very top of screen
+            mWindowResizer.WindowFinishedMove += () =>
+            {
+                // Update being moved flag
+                BeingMoved = false;
+
+                // Check for moved to top of window and not at an edge
+                if (mDockPosition == WindowDockPosition.Undocked && mWindow.Top == mWindowResizer.CurrentScreenSize.Top)
+                    // If so, move it to the true top (the border size)
+                    mWindow.Top = -OuterMarginSize.Top;
+            };
         }
 
         #endregion
@@ -196,6 +227,7 @@ namespace ChessCreator
         {
             // Fire off events for all properties that are affected by a resize
             OnPropertyChanged(nameof(Borderless));
+            OnPropertyChanged(nameof(FlatBorderThickness));
             OnPropertyChanged(nameof(ResizeBorderThickness));
             OnPropertyChanged(nameof(OuterMarginSize));
             OnPropertyChanged(nameof(WindowRadius));

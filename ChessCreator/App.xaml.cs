@@ -1,10 +1,9 @@
-﻿
-using ChessCreator;
-using ChessCreator.Core;
+﻿using ChessCreator.Core;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,6 +27,9 @@ namespace ChessCreator
             // Setup the main application 
             ApplicationSetup();
 
+            // Log it
+            IoC.Logger.Log("Application starting...", LogLevel.Debug);
+
             // Show the main window
             Current.MainWindow = new Dashboard();
             Current.MainWindow.Show();
@@ -40,6 +42,20 @@ namespace ChessCreator
         {
             // Setup IoC
             IoC.Setup();
+
+            // Bind a logger
+            IoC.Kernel.Bind<ILogFactory>().ToConstant(new BaseLogFactory(new[] 
+            {
+                // TODO: Add ApplicationSettings so we can set/edit a log location
+                //       For now just log to the path where this application is running
+                new FileLogger("log.txt"),
+            }));
+
+            // Add our task manager
+            IoC.Kernel.Bind<ITaskManager>().ToConstant(new TaskManager());
+
+            // Bind a file manager
+            IoC.Kernel.Bind<IFileManager>().ToConstant(new FileManager());
 
             // Bind a UI Manager
             IoC.Kernel.Bind<IUIManager>().ToConstant(new UIManager());
